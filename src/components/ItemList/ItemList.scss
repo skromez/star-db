@@ -1,0 +1,14 @@
+.item-list {
+  margin-top: 50px;
+  min-width: 50%;
+  margin-right: auto;
+  @media (max-width: 920px) {
+    min-width: 100%;
+  }
+}
+.list-group-item {
+  cursor: pointer;
+  &:hover {
+    background-color: #444444;
+  }
+}

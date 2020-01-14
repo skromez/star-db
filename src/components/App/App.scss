@@ -1,0 +1,10 @@
+.app {
+  padding: 0 100px;
+}
+
+.app__wrapper {
+  display: flex;
+  @media (max-width: 920px) {
+    flex-direction: column;
+  }
+}
