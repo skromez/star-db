@@ -1,23 +1,60 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './ItemList.scss';
+import Spinner from '../Spinner';
 
-const ItemList = () => {
-  return (
-    <div className="item-list">
-      <ul className="list-group">
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          Luke Skywalker
+class ItemList extends Component {
+
+  state = {
+    itemList: null
+  };
+
+  componentDidMount() {
+
+    const { getData } = this.props;
+
+    getData()
+      .then((itemList) => {
+        this.setState({
+          itemList
+        });
+      });
+  }
+
+  renderItems = (arr) => {
+    return arr.map((item) => {
+      const { id } = item;
+
+      const label = this.props.children(item);
+      return (
+        <li
+          className="list-group-item d-flex justify-content-between align-items-center"
+          key={id}
+          onClick={() => this.props.onItemSelected(id)}
+        >
+          {label}
         </li>
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          Darth Vader
-        </li>
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          R2-D2
-        </li>
-      </ul>
-    </div>
-  )
+      )
+    })
+  }
+
+  render() {
+    const { itemList } = this.state;
+
+    if (!itemList) {
+      return <Spinner />
+    }
+
+    const items = this.renderItems(itemList);
+
+    return (
+      <div className="item-list">
+        <ul className="list-group">
+          {items}
+        </ul>
+      </div>
+    )
+  }
 };
 
 export default ItemList

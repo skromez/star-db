@@ -1,0 +1,1 @@
+import ErrorBoundry from './ErrorBoundry';

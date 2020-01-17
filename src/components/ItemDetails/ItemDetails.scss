@@ -3,7 +3,6 @@
   padding: 15px 15px;
   background: #303030;
   border-radius: 15px;
-  margin-top: 50px;
   min-width: 45%;
 
   @media (max-width: 920px) {
@@ -14,6 +13,9 @@
 .person-details__img {
   border-radius: 15px;
   margin-right: 35px;
+  max-height: 230px;
+  max-width: 150px;
+  object-fit: cover;
 }
 
 .person-info__title {

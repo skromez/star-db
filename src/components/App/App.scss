@@ -4,7 +4,10 @@
 
 .app__wrapper {
   display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
   @media (max-width: 920px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
